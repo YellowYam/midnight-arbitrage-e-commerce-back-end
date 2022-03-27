@@ -6,11 +6,11 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // GET all product tags
 router.get('/', async (req, res) => {
   try {
-    const productTagData = await ProductTag.findAll({
+    const tagData = await Tag.findAll({
       // Includes the category and tag model objects as attributes of the response when fetching products.
-      include: [{model: Tag}],
+      include: [{model: Product}],
     });
-    res.status(200).json(productTagData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }

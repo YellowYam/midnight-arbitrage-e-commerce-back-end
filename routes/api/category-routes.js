@@ -3,23 +3,29 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+router.get('/', async (req, res) => {
+  try {
+    const categoryData = await Category.findAll({
+      // Includes the category and tag model objects as attributes of the response when fetching categorys.
+      include: [{ model: Product }],
+    });
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
-
 router.get('/:id', async (req, res) => {
   try {
-    const readerData = await Reader.findByPk(req.params.id, {
+    const categoryData = await Category.findByPk(req.params.id, {
       include: [{ model: Product }],
     });
 
-    if (!readerData) {
-      res.status(404).json({ message: 'No reader found with that id!' });
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category found with that id!' });
       return;
     }
 
-    res.status(200).json(readerData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -27,8 +33,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const readerData = await Reader.create(req.body);
-    res.status(200).json(readerData);
+    const categoryData = await Category.create(req.body);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -65,18 +71,18 @@ router.put('/:category_id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const readerData = await Reader.destroy({
+    const categoryData = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!readerData) {
-      res.status(404).json({ message: 'No reader found with that id!' });
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category found with that id!' });
       return;
     }
 
-    res.status(200).json(readerData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
