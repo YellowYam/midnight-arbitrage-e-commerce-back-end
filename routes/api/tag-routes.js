@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
 // GET a product tag by its id
 router.get('/:id', async (req, res) => {
   try {
-    const productTagData = await ProductTag.findByPk(req.params.id, {
-      include: [{ model: Tag }],
+    const productTagData = await Tag.findByPk(req.params.id, {
+      include: [{ model: Product }],
     });
 
     if (!productTagData) {
@@ -48,18 +48,11 @@ router.post('/', async (req, res) => {
 // Updates tag based on its tag_id
 router.put('/:tag_id', (req, res) => {
   //Calls the update method on the Tag model
-  Tag.update(
-    {
-      // All the fields you can update and the data attached to the request body.
-      tag_name: req.body.tag_name
+  Tag.update(req.body, {
+    where: {
+      id: req.params.tag_id,
     },
-    {
-      // Gets a tag based on the tag_id given in the request parameters
-      where: {
-        tag_id: req.params.tag_id,
-      },
-    }
-  )
+  })
     .then((updatedTag) => {
       res.json(updatedTag);
     })
@@ -71,18 +64,18 @@ router.put('/:tag_id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const productTagData = await ProductTag.destroy({
+    const tagData = await Tag.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!productTagData) {
+    if (!tagData) {
       res.status(404).json({ message: 'No productTag found with that id!' });
       return;
     }
 
-    res.status(200).json(productTagData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }

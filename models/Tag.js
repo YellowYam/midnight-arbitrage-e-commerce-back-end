@@ -2,7 +2,14 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Tag extends Model {}
+class Tag extends Model {
+  
+  toJSON(){
+    console.log(this.get());
+    return {...this.get() }
+  }
+
+}
 
 Tag.init(
   {

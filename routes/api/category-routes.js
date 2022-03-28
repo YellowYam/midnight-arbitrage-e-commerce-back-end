@@ -43,23 +43,11 @@ router.post('/', async (req, res) => {
 // Updates category based on its category_id
 router.put('/:category_id', (req, res) => {
   //Calls the update method on the Category model
-  Category.update(
-    {
-      // All the fields you can update and the data attached to the request body.
-      title: req.body.title,
-      author: req.body.author,
-      isbn: req.body.isbn,
-      pages: req.body.pages,
-      edition: req.body.edition,
-      is_paperback: req.body.is_paperback,
+ Category.update(req.body, {
+    where: {
+      id: req.params.category_id,
     },
-    {
-      // Gets a category based on the category_id given in the request parameters
-      where: {
-        category_id: req.params.category_id,
-      },
-    }
-  )
+  })
     .then((updatedCategory) => {
       res.json(updatedCategory);
     })
@@ -69,11 +57,11 @@ router.put('/:category_id', (req, res) => {
     });
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:category_id', async (req, res) => {
   try {
     const categoryData = await Category.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.category_id,
       },
     });
 

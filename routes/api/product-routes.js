@@ -19,16 +19,16 @@ router.get('/', async (req, res) => {
 // get one product
   router.get('/:id', async (req, res) => {
     try {
-      const readerData = await Reader.findByPk(req.params.id, {
-        include: [{ model: LibraryCard }],
+      const productData = await Product.findByPk(req.params.id, {
+        include: [{ model: Category }, { model: Tag }],
       });
   
-      if (!readerData) {
-        res.status(404).json({ message: 'No reader found with that id!' });
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with that id!' });
         return;
       }
   
-      res.status(200).json(readerData);
+      res.status(200).json(productData);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -110,18 +110,18 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const readerData = await Reader.destroy({
+    const productData = await Product.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!readerData) {
-      res.status(404).json({ message: 'No reader found with that id!' });
+    if (!productData) {
+      res.status(404).json({ message: 'No product found with that id!' });
       return;
     }
 
-    res.status(200).json(readerData);
+    res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
   }
