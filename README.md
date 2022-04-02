@@ -45,12 +45,14 @@
 ## Usage
 ***
 1. Navigate to the application directory.
-2. Run <code>node ./seeds/index.js</code> to seed the database.
-3. Run <code>npm start</code>
-4. Open Insomnia.
-5. Send a GET request to the webserver's products API*. <br>*(localhost:{PORT}/api/products) -- The default port is 3001.
-6. Repeat for all CRUD operations. 
-7. Repeat steps 3-4 for the webserver's categories and tag API's. 
+2. Run <code>code .env</code> to edit your environment variables. (Save your changes.)
+3. Rename <code>.env_Example</code> to <code>.env</code>.
+3. Run <code>node ./seeds/index.js</code> to seed the database.
+4. Run <code>npm start</code>
+5. Open Insomnia.
+6. Send a GET request to the webserver's products API*. <br>*(localhost:{PORT}/api/products) -- The default port is 3001.
+7. Repeat for all CRUD operations. 
+8. Repeat steps 3-4 for the webserver's categories and tag API's. 
 
 Example objects for each API. <br>
 
