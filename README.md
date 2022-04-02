@@ -13,7 +13,9 @@
   5. [Questions](#questions)
 
 ## Installation
+#### A [Walkthrough Video](https://drive.google.com/file/d/1BLovSo5UA0L17L5MgMfD4PR9-ot2Gc8b/view) is available. <br>
 ***
+
 ### Git Bash
   ***
   Type these commands into git bash to install the application. Midnight Arbitrage E-Commerce Back-end was created with
@@ -47,7 +49,7 @@
 ***
 1. Navigate to the application directory.
 2. Run <code>code .env.EXAMPLE</code> to edit your environment variables. (Save your changes.)
-3. Rename <code>.env_Example</code> to <code>.env</code>.
+3. Rename <code>.env.Example</code> to <code>.env</code>.
 3. Run <code>node ./seeds/index.js</code> to seed the database.
 4. Run <code>npm start</code>
 5. Open Insomnia.
@@ -81,7 +83,7 @@ Tag
 }
 ```
 
-#### A [Walkthrough Video] is available.
+
 
   ## Contributors
   ***
