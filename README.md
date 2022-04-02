@@ -41,6 +41,7 @@
   2. Run <code>mysql -u root -p</code>
   3. Enter your database password.
   4. Run <code>source ./db/schema.sql</code>
+  5. Run <code>exit</code> to exit MySQL shell.
 
 ## Usage
 ***
@@ -104,5 +105,3 @@ Tag
 
   [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br>
   (The license badge is a clickable link.)
-
-It runs in [Insomnia](https://insomnia.rest/download).
