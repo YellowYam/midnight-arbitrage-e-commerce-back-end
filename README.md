@@ -46,7 +46,7 @@
 ## Usage
 ***
 1. Navigate to the application directory.
-2. Run <code>code .env</code> to edit your environment variables. (Save your changes.)
+2. Run <code>code .</code> to edit your environment variables. (Save your changes.)
 3. Rename <code>.env_Example</code> to <code>.env</code>.
 3. Run <code>node ./seeds/index.js</code> to seed the database.
 4. Run <code>npm start</code>
