@@ -32,6 +32,7 @@
   + [dotenv](https://www.npmjs.com/package/dotenv) - enables the .env environment file
   + [express](https://www.npmjs.com/package/express) - frameworks the JavaScript back-end
   + [sequelize](https://www.npmjs.com/package/sequelize) - an object-relational mapper.
+  + [mysql2](https://www.npmjs.com/package/mysql2) - connects the database to the back-end 
 
 
 ### MySQL
